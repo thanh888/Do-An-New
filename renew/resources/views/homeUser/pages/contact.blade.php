@@ -23,7 +23,7 @@
             </div>
             <div class="col-md-1"></div>
             <div class="col-md-6 ftco-animate">
-                <form action="{{url('/send-contact')}}" method="post" class="contact-form">
+                <form action="{{ route('home.sendcontact') }}" method="post" class="contact-form">
                     {{csrf_field()}}
                     <div class="row">
                         <div class="col-md-6">

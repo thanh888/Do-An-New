@@ -1,6 +1,6 @@
 @extends('admin_layout')
 @section('title')
-    <title>Roles</title>
+    <title>Tài khoản</title>
 @endsection
 
 @section('js')

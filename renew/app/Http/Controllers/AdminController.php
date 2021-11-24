@@ -5,8 +5,14 @@ namespace App\Http\Controllers;
 use App\Models\Role;
 use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Redirect;
+use \Illuminate\Http\Response;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Validation\Rule;
+session_start();
 
 class AdminController extends Controller
 {

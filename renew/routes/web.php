@@ -54,6 +54,30 @@ Route::prefix('home')->group(function(){
         'as'=> 'home.AddToCart',
         'uses'=> 'UserHomeController@AddToCart'
     ]);
+
+
+    Route::get('/set-appointment', [
+        'as'=> 'home.setappointment',
+        'uses'=> 'Appointment@set_appointment'
+    ]);
+    Route::get('/get-appointment', [
+        'as'=> 'home.getappointment',
+        'uses'=> 'Appointment@get_appointment'
+    ]);
+    Route::post('/confirm-appointment', [
+        'as'=> 'home.successappointment',
+        'uses'=> 'Appointment@confirm_appointment'
+    ]);
+
+    Route::get('/contact', [
+        'as'=> 'home.contact',
+        'uses'=> 'Contact@index'
+    ]);
+    
+    Route::post('/send-contact', [
+        'as'=> 'home.sendcontact',
+        'uses'=> 'Contact@send_contact'
+    ]);
 });
 
 //Admin
@@ -119,6 +143,30 @@ Route::prefix('Category')->group(function(){
     ]);
 });
 
+Route::prefix('AdminTable')->group(function(){
+    Route::get('/',[
+        'as'=>'AdminTable.index',
+        'uses'=>'AdminTable@index'
+    ]);
+    Route::get('/delete/{id}',[
+        'as'=>'AdminTable.delete',
+        'uses'=>'AdminTable@delete_table'
+    ]);
+    Route::get('/search',[
+        'as'=>'AdminTable.search',
+        'uses'=>'AdminTable@search_table'
+    ]);
+});
+Route::prefix('AdminContact')->group(function(){
+    Route::get('/',[
+        'as'=>'AdminContact.index',
+        'uses'=>'AdminContact@index'
+    ]);
+    Route::get('/view-contact/{id}',[
+        'as'=>'AdminContact.view',
+        'uses'=>'AdminContact@eye_contact'
+    ]);
+});
 Route::prefix('Product')->group(function(){
     Route::get('/', [
         'as'=> 'Product.index',

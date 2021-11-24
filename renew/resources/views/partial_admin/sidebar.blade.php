@@ -22,22 +22,27 @@
                             </li>
                             </li>
                             <li class="parent">
-                                <a href="#" class=""><i class="fa fa-puzzle-piece mr-3"></i>
-                                    <span class="none">Widget </span>
+                               <a href="{{route('AdminTable.index')}}" class=""><i class="fa fa-table mr-3"></i>
+                                    <span class="none"> Đơn đặt bàn </span>
                                 </a>
                             </li>
                             <li class="parent">
-                                <a href="#" onclick="toggle_menu('ul_element'); return false" class=""><i class="fa fa-puzzle-piece mr-3"></i>
-                                    <span class="none">Quan ly <i class="fa fa-angle-down pull-right align-bottom"></i></span>
+                                <a href="#" onclick="toggle_menu('ul_element'); return false" class=""><i class="fa fa-pencil-square-o mr-3"></i>
+                                    <span class="none">Quản lý<i class="fa fa-angle-down pull-right align-bottom"></i></span>
                                 </a>
                                 <ul class="children" id="ul_element">
-                                    <li class="child"><a href="{{ route('Category.index') }}" class="ml-4"><i class="fa fa-angle-right mr-2"></i> Danh muc san pham</a></li>
-                                    <li class="child"><a href="{{ route('Product.index') }}" class="ml-4"><i class="fa fa-angle-right mr-2"></i> Danh sach san pham</a></li>
-                                    <li class="child"><a href="{{ route('User.index') }}" class="ml-4"><i class="fa fa-angle-right mr-2"></i> Danh sach nguoi dung</a></li>
-                                    <li class="child"><a href="{{ route('Role.index') }}" class="ml-4"><i class="fa fa-angle-right mr-2"></i> Danh sach vai tro </a></li>
-                                    <li class="child"><a href="{{ route('Permission.create') }}" class="ml-4"><i class="fa fa-angle-right mr-2"></i> Danh sach chuc nang</a></li>
+                                    <li class="child"><a href="{{ route('Category.index') }}" class="ml-4"><i class="fa fa-angle-right mr-2"></i> Danh mục sản phẩm</a></li>
+                                    <li class="child"><a href="{{ route('Product.index') }}" class="ml-4"><i class="fa fa-angle-right mr-2"></i>Danh sách sản phẩm</a></li>
+                                    <li class="child"><a href="{{ route('User.index') }}" class="ml-4"><i class="fa fa-angle-right mr-2"></i> Người dùng</a></li>
+                                    <li class="child"><a href="{{ route('Role.index') }}" class="ml-4"><i class="fa fa-angle-right mr-2"></i> Vai trò</a></li>
+                                    <li class="child"><a href="{{ route('Permission.create') }}" class="ml-4"><i class="fa fa-angle-right mr-2"></i>Chức năng</a></li>
                                 </ul>
-                                
+                            </li>
+                            <li class="parent">
+                                <a href="{{ route('AdminContact.index') }}" class=""><i class="fa fa-comment-o mr-3"> </i>
+                                    <span class="none">Phản hồi từ khách hàng </span>
+                                </a>
+                            </li>
                         </ul>
                     </div>
                     <!--Sidebar Naigation Menu-->

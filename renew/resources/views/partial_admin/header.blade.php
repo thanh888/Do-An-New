@@ -135,7 +135,9 @@
                                 <img src="{{asset('backend/dashboard/assets/img/profile.jpg')}}" alt="Adam" class="rounded-circle" width="40px" height="40px">
                             </a>
                             <div class="dropdown-menu dropdown-menu-right mt-13" aria-labelledby="dropdownMenuLink">
-                                <a class="dropdown-item" href="#"><i class="fa fa-user pr-2"></i> Profile</a>
+                                <a class="dropdown-item" href="#"><i class="fa fa-user pr-2"></i>
+                                    {{auth()->user()->name}}
+                                </a>
                                 <div class="dropdown-divider"></div>
                                 <a class="dropdown-item" href="#"><i class="fa fa-th-list pr-2"></i> Tasks</a>
                                 <div class="dropdown-divider"></div>
