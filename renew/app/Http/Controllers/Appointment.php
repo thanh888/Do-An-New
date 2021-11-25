@@ -18,7 +18,13 @@ class Appointment extends Controller
        return redirect(route('home.getappointment'));
     }
     function get_appointment(){
-        return view('homeUser.functionappointment.appointment');
+        if(auth()->check()){
+            return view('homeUser.functionappointment.appointment');
+        }else{
+            echo'<script> alert("Bạn phải đăng nhập")</script>';
+            return view('homeUser.login.index');
+        }
+      
     }
     function confirm_appointment(Request $request){
         $data = new TbAppointment();
@@ -28,7 +34,7 @@ class Appointment extends Controller
         $data->sdt=$request->phone;
         $data->descript=$request->descript;
         $data->save();
-        echo '<script> alert("Đặt bàn thành công") </script>';
+        echo '<script> alert("Đặt bàn thành công") </>';
         return view('homeUser.pages.home');
     }
 }
