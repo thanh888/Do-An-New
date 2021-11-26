@@ -33,6 +33,7 @@
                                 <ul class="children" id="ul_element">
                                     <li class="child"><a href="{{ route('Category.index') }}" class="ml-4"><i class="fa fa-angle-right mr-2"></i> Danh mục sản phẩm</a></li>
                                     <li class="child"><a href="{{ route('Product.index') }}" class="ml-4"><i class="fa fa-angle-right mr-2"></i>Danh sách sản phẩm</a></li>
+                                    <li class="child"><a href="{{ route('AdminPosts.index') }}" class="ml-4"><i class="fa fa-angle-right mr-2"></i> Tiêu đề</a></li>
                                     <li class="child"><a href="{{ route('User.index') }}" class="ml-4"><i class="fa fa-angle-right mr-2"></i> Người dùng</a></li>
                                     <li class="child"><a href="{{ route('Role.index') }}" class="ml-4"><i class="fa fa-angle-right mr-2"></i> Vai trò</a></li>
                                     <li class="child"><a href="{{ route('Permission.create') }}" class="ml-4"><i class="fa fa-angle-right mr-2"></i>Chức năng</a></li>

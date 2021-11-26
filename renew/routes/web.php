@@ -157,6 +157,16 @@ Route::prefix('AdminTable')->group(function(){
         'uses'=>'AdminTable@search_table'
     ]);
 });
+Route::prefix('AdminPosts')->group(function(){
+    Route::get('/view-post',[
+        'as'=>'AdminPosts.index',
+        'uses'=>'Post@view'
+    ]);
+    Route::post('/update-post',[
+        'as'=>'AdminPosts.post',
+        'uses'=>'Post@post'
+    ]);
+});
 Route::prefix('AdminContact')->group(function(){
     Route::get('/',[
         'as'=>'AdminContact.index',
