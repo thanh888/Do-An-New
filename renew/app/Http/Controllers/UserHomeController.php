@@ -6,6 +6,7 @@ use App\Models\Cart;
 use App\Models\Category;
 use App\Models\Product;
 use App\Models\Role;
+use App\Models\Size;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -53,19 +54,19 @@ class UserHomeController extends Controller
     }
     public function register()
     {
-        return view('home.login.register');
+        return view('homeUser.login.register');
     }
     public function postRegister(Request $request)
     {
         // $role = $this->role->where('name', 'user')->get();
-        $request->validate([
-            'username'=> 'required',
-            'email'=> 'unique:users,email' ,
-            'password'=> 'min:8|max:20|required_with:confirm_passrord|same:confirm_passrord',
-            'confirm_passrord'=> 'min:8'
-        ]);
+        // $request->validate([
+        //     'username'=> 'required',
+        //     'email'=> 'unique:users,email' ,
+        //     'password'=> 'min:8|max:20|required_with:confirm_passrord|same:confirm_passrord',
+        //     'confirm_passrord'=> 'min:8'
+        // ]);
         $this->user->create([
-            'name'=> $request->username,
+            'name'=> $request->name,
             'email'=> $request->email,
             'password'=> Hash::make($request->password)
         ]);
@@ -86,22 +87,67 @@ class UserHomeController extends Controller
 
     public function AddToCart(Request $request, $id)
     {
-        // dd($request->size);
+        
+        // dd($request->all());
         if (auth()->check()) {
+            
+            $user =Cart::Where('user_id', auth()->user()->id)->get();
+            $products = Cart::where('user_id', auth()->user()->id)->where('product_id', $id)->get();
+            // dd($products->quantity);
+            $data = [];
+            foreach ($products as $product) {
+                
+                if ($user->contains('product_id', $id)) {
+                    $data = $product;
+                    if($request->quantity){
+                        Cart::find($data->id)->update([
+                            'quantity'=> $data->quantity+$request->quantity,
+                        ]);
+
+                    }
+                    else{
+                        Cart::find($data->id)->update([
+                            'quantity'=> $data->quantity+1,
+                        ]);
+
+                    }
+                    return response()->json([
+                        'code'=>200,
+                        'message'=>'fail'
+                    ], 200);
+                    break;
+                }
+                continue;
+            }
             $product= Product::find($id);
+            // $size= Size::find($request->size);
             $user= $this->user->find(auth()->user()->id);
             Cart::create([ 
                 'user_id'=> auth()->user()->id,
                 'product_id'=> $id,
                 'name'=>$product->name,
-                'size'=> $request->size,
+                'image'=>$product->image,
+                'size'=> $product->size,
                 'quantity'=>$request->quantity,
                 'price'=>$product->price * $request->quantity,
 
             ]);
-            return redirect()->to('home.detail');
+            return response()->json([
+                'code'=>200,
+                'message'=>'fail'
+            ], 200);
         }
         return redirect()->to(route('home.login'));
+    }
+    public function cart()
+    {
+        if (auth()->check()) {
+            $products= Cart::where('user_id', auth()->user()->id)->get();
+
+            return view('homeUser.pages.cart', compact('products'));
+        }
+        return redirect()->to(route('home.login'));
+
     }
 }
 

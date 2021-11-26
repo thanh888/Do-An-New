@@ -21,7 +21,7 @@ class AdminUserController extends Controller
     }
     public function index()
     {
-        $users=  $this->user->latest()->paginate(5);
+        $users= $this->user->latest()->paginate(5);
         return view('admin.user.index', compact('users'));
     }
     public function create(){

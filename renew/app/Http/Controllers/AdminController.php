@@ -5,14 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Role;
 use App\User;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Redirect;
-use \Illuminate\Http\Response;
-use Illuminate\Support\Facades\Validator;
-use Illuminate\Validation\Rule;
-session_start();
 
 class AdminController extends Controller
 {
@@ -26,13 +20,18 @@ class AdminController extends Controller
     }
     public function index()
     {
-        return view('admin.home');
+        if (auth()->check()) {
+            return view('admin.home');
+
+        }
+        return view('admin.login.index');
+        // return view('admin.home');
     }   
     public function login()
     {
-        if (auth()->check()) {
-            return redirect()->to(route('Admin.index'));
-        }
+        // if (auth()->check()) {
+        //     return redirect()->to(route('Admin.index'));
+        // }
         return view('admin.login.index');
     }
     public function logout()

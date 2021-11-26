@@ -26,14 +26,14 @@
                     ambushed her, made her drunk with Longe and Parole and dragged her into their agency, where they
                     abused her for their.
                 </p>
-                <form action="{{ route('home.AddToCart', ['id'=> $product->id]) }}" method="post">
+                <form action="" method="post">
                     @csrf
                     <div class="row mt-4">
                         <div class="col-md-6">
                             <div class="form-group d-flex">
                                 <div class="select-wrap">
                                     <div class="icon"><span class="ion-ios-arrow-down"></span></div>
-                                    <select name="size" id="" class="form-control">
+                                    <select name="size" id="" class="form-control size">
                                         @foreach ($product->sizes as $itemSize)
                                             <option value="{{ $itemSize->name }}">{{ $itemSize->name }}</option>
                                         @endforeach
@@ -57,7 +57,7 @@
                             </span>
                         </div>
                     </div>
-                    <p><button class="btn btn-primary py-3 px-5" type="submit">Add to Cart</button></p>
+                     <a data-url="{{ route('Menu.AddToCart', ['id'=>$product->id]) }}"  type="submit" class="btn btn-primary py-3 px-5  add_to_cart">Add to Cart</a> 
 
                 </form>
             </div>
@@ -116,7 +116,7 @@
                         <h3><a href="#">Coffee Capuccino</a></h3>
                         <p>A small river named Duden flows by their place and supplies</p>
                         <p class="price"><span>$5.90</span></p>
-                        <p><a href="#" class="btn btn-primary btn-outline-primary">Add to Cart</a></p>
+                        <p><a data-url="{{ route('Menu.AddToCart',['id'=>$product->id]) }}" href="#" class="btn btn-primary btn-outline-primary">Add to Cart</a></p>
                     </div>
                 </div>
             </div>
@@ -130,42 +130,44 @@
 
 @section('js')
 <script>
-$(document).ready(function() {
-
-    var quantitiy = 0;
-
-    $('.quantity-right-plus').click(function(e) {
-
-        // Stop acting like a button
-        e.preventDefault();
-        // Get the field name
-        var quantity = parseInt($('#quantity').val());
-
-        // If is not undefined
-
-        $('#quantity').val(quantity + 1);
-        // var quantity = $('#quantity').val(quantity + 1);
-
-        // alert($('#quantity').val());
-        // Increment
-
-    });
-
-    $('.quantity-left-minus').click(function(e) {
-        // Stop acting like a button
-        e.preventDefault();
-        // Get the field name
-        var quantity = parseInt($('#quantity').val());
-
-        // If is not undefined
-
-        // Increment
-        if (quantity > 0) {
-            $('#quantity').val(quantity - 1);
-        }
-    });
+    $(document).ready(function() {
     
-
-});
-</script>
+        var quantitiy = 0;
+    
+        $('.quantity-right-plus').click(function(e) {
+    
+            // Stop acting like a button
+            e.preventDefault();
+            // Get the field name
+            var quantity = parseInt($('#quantity').val());
+    
+            // If is not undefined
+    
+            $('#quantity').val(quantity + 1);
+            // var quantity = $('#quantity').val(quantity + 1);
+    
+            // alert($('#quantity').val());
+            // Increment
+    
+        });
+    
+        $('.quantity-left-minus').click(function(e) {
+            // Stop acting like a button
+            e.preventDefault();
+            // Get the field name
+            var quantity = parseInt($('#quantity').val());
+    
+            // If is not undefined
+    
+            // Increment
+            if (quantity > 0) {
+                $('#quantity').val(quantity - 1);
+            }
+        });
+        
+    
+    });
+    </script>
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="{{ asset('frontend/add_to_cart/list.js') }}"></script>
 @endsection

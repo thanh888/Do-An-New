@@ -80,7 +80,7 @@
             <div class="col-md-6 mb-5 pb-3">
                 <h3 class="mb-5 heading-pricing ftco-animate">{{ $category->name }}</h3>
                 @foreach ($category->products as $product)
-                <a href="{{ route('home.detail',['id'=>$product->id]) }}">
+                <a href="{{ route('Menu.detail',['id'=>$product->id]) }}">
                     <div class="pricing-entry d-flex ftco-animate">
                         <div class="img"
                             style="background-image: url({{asset('uploads/products/'.$product->image.'')}});">
@@ -114,14 +114,79 @@
                     the blind texts.</p>
             </div>
         </div>
+        {{-- <div class="category-tab"><!--category-tab-->
+            <div class="col-sm-12">
+                <ul class="nav nav-tabs">
+                    @foreach($categories as $indexCategory => $categoryItem)
+                    <li class="{{$indexCategory==0?'active':''}}"><a href="#category_tab_{{$categoryItem->id}}" data-toggle="tab">{{$categoryItem->name}}</a></li>
+                    @endforeach								
+                </ul>
+            </div>
+            <div class="tab-content">
+                @foreach($categories as $indexCategoryProduct => $categoryItemProduct)
+                <div class="tab-pane fade {{$indexCategoryProduct==0?'active in':''}}" id="category_tab_{{$categoryItemProduct->id}}" >
+                    @foreach($categoryItemProduct->products as $productItemTab)
+                    <div class="col-sm-3">
+                        <div class="product-image-wrapper">
+                            <div class="single-products">
+                                <div class="productinfo text-center">
+                                    <img class="styleanh" src="{{config('app.base_url').$productItemTab->image}}" alt="" />
+                                    <h2>{{number_format($productItemTab->price)}}</h2>
+                                    <p>{{$productItemTab->name}}</p>
+                                    <a href="#" data-url="{{route('product.add_cart',['id'=>$productItemTab->id])}}"class="btn btn-default add-to-cart add_to_cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+                                </div>
+                                
+                            </div>
+                        </div>
+                    </div>
+                    @endforeach
+                    
+                </div>
+                @endforeach
+                
+            </div>
+        </div> --}}
         <div class="row d-md-flex">
-            <div class="col-lg-12 ftco-animate p-md-5">
+            <div class="col-sm-12 ftco-animate p-md-5">
+                <ul class="nav nav-tabs ftco-animate nav-pills justify-content-center">
+                    @foreach($categories as $indexCategory => $categoryItem)
+                    <li class="nav-link {{$indexCategory==0?'active':''}}"><a href="#category_tab_{{$categoryItem->id}}" data-toggle="tab">{{$categoryItem->name}}</a></li>
+                    @endforeach								
+                </ul>
+            </div>
+            <div class="tab-content">
+                @foreach($categories as $indexCategoryProduct => $categoryItemProduct)
+                <div class="tab-pane fade {{$indexCategoryProduct==0?'active in':''}}" id="category_tab_{{$categoryItemProduct->id}}" >
+                    @foreach($categoryItemProduct->products as $productItemTab)
+                    <div class="col-sm-3">
+                        <div class="product-image-wrapper">
+                            <div class="single-products">
+                                <div class="productinfo text-center">
+                                    <img class="styleanh" src="{{config('app.base_url').$productItemTab->image}}" alt="" />
+                                    <h2>{{number_format($productItemTab->price)}}</h2>
+                                    <p>{{$productItemTab->name}}</p>
+                                    {{-- <a href="#" data-url="{{route('product.add_cart',['id'=>$productItemTab->id])}}"class="btn btn-default add-to-cart add_to_cart"><i class="fa fa-shopping-cart"></i>Add to cart</a> --}}
+                                </div>
+                                
+                            </div>
+                        </div>
+                    </div>
+                    @endforeach
+                    
+                </div>
+                @endforeach
+                
+            </div>
+            {{-- <div class="col-lg-12 ftco-animate p-md-5">
                 <div class="row">
                     <div class="col-md-12 nav-link-wrap mb-5">
                         <div class="nav ftco-animate nav-pills justify-content-center" id="v-pills-tab" role="tablist"
                             aria-orientation="vertical">
-                            <a class="nav-link active" id="v-pills-1-tab" data-toggle="pill" href="#v-pills-1"
-                                role="tab" aria-controls="v-pills-1" aria-selected="true">Main Dish</a>
+                            @foreach ($categories as $category)
+                                <a class="nav-link active" id="v-pills-{{$category->id}}-tab" data-toggle="pill" href="#v-pills-{{$category->id}}"
+                                    role="tab" aria-controls="v-pills-{{$category->id}}" aria-selected="true">{{$category->name}}</a>
+                                
+                            @endforeach
 
                             <a class="nav-link" id="v-pills-2-tab" data-toggle="pill" href="#v-pills-2" role="tab"
                                 aria-controls="v-pills-2" aria-selected="false">Drinks</a>
@@ -404,7 +469,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> --}}
         </div>
     </div>
 </section>

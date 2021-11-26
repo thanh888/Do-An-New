@@ -57,10 +57,10 @@
         <div class="form-group row">
             <label class="control-label col-sm-2" >Chon vai tro</label>
             <div class="col-sm-10">
-                <select class="form-control select2_init" name="size[]" multiple="multiple">
+                <select class="form-control select2_init" name="size" >
                     {{-- <option value="0">Chon vai tro</option> --}}
                     @foreach ($sizes as $size)
-                        <option value="{{ $size->id }}">{{ $size->name }}</option>
+                        <option value="{{ $size->name }}">{{ $size->name }}</option>
                     @endforeach
                   </select>
             </div>

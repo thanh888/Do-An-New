@@ -7,6 +7,7 @@ use App\Models\Product;
 use App\Models\Size;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 
 class ProductController extends Controller
@@ -21,8 +22,12 @@ class ProductController extends Controller
     }
     public function index()
     {
-        $products= $this->product->all();
-        return view('admin.product.index', compact('products'));
+        if(auth()->check()){
+
+            $products= $this->product->all();
+            return view('admin.product.index', compact('products'));
+
+        }
     }
 
     public function create()
@@ -37,6 +42,7 @@ class ProductController extends Controller
     {
         $data= array();
         $data['name']= $request->name;
+        $data['size']= $request->size;
         $data['price']= $request->price;
         $data['category_id']= $request->category_id;
         $data['description']= $request->description;
@@ -49,14 +55,14 @@ class ProductController extends Controller
             $get_image->move('uploads/products',$new_image);
             $data['image']= $new_image;
             $product= $this->product->create($data);
-            $product->sizes()->attach($request->size);
+            // $product->sizes()->attach($request->size);
             Session::put('message','Success');
             return redirect()->route('Product.index');
 
         }
         $data['image']= '';
         $product= $this->product->create($data);
-        $product->sizes()->attach($request->size);
+        // $product->sizes()->attach($request->size);
         Session::put('message','Success');
         return redirect()->route('Product.index');
 
@@ -74,6 +80,7 @@ class ProductController extends Controller
     {
         $data= array();
         $data['name']= $request->name;
+        $data['size']= $request->size;
         $data['price']= $request->price;
         $data['category_id']= $request->category_id;
         $data['description']= $request->description;
@@ -86,14 +93,14 @@ class ProductController extends Controller
             $get_image->move('uploads/products',$new_image);
             $data['image']= $new_image;
             $product= $this->product->find($id)->update($data);
-            $product->sizes()->sync($request->size);
+            // $product->sizes()->sync($request->size);
             Session::put('message','Success');
             return redirect()->route('Product.index');
 
         }
         $this->product->find($id)->update($data);
         $product= $this->product->find($id);
-        $product->sizes()->sync($request->size);
+        // $product->sizes()->sync($request->size);
         Session::put('message','Success');
 
         return redirect()->route('Product.index');

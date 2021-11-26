@@ -20,3 +20,4 @@
 <link rel="stylesheet" href="{{asset('frontend/css/flaticon.css')}}">
 <link rel="stylesheet" href="{{asset('frontend/css/icomoon.css')}}">
 <link rel="stylesheet" href="{{asset('frontend/css/style.css')}}">
+<script src="jquery-3.5.1.min.js"></script>
