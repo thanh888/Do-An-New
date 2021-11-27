@@ -81,7 +81,7 @@
             </div>
             <div class="book p-4">
                 <h3>Đặt bàn trước</h3>
-                <form action="{{URL::to('/set-appointment')}}" class="appointment-form">
+                <form action="{{ route('home.setappointment') }}" class="appointment-form">
                     <div class="d-md-flex">
                         <div class="form-group">
                             <input type="text" name="name" class="form-control" placeholder="Họ và Tên">

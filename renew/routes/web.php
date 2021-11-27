@@ -46,6 +46,29 @@ Route::prefix('Home')->group(function(){
         'uses'=> 'UserHomeController@cart'
     ]);
 
+    Route::get('/set-appointment', [
+        'as'=> 'home.setappointment',
+        'uses'=> 'Appointment@set_appointment'
+    ]);
+    Route::get('/get-appointment', [
+        'as'=> 'home.getappointment',
+        'uses'=> 'Appointment@get_appointment'
+    ]);
+    Route::post('/confirm-appointment', [
+        'as'=> 'home.successappointment',
+        'uses'=> 'Appointment@confirm_appointment'
+    ]);
+
+    Route::get('/contact', [
+        'as'=> 'home.contact',
+        'uses'=> 'Contact@index'
+    ]);
+    
+    Route::post('/send-contact', [
+        'as'=> 'home.sendcontact',
+        'uses'=> 'Contact@send_contact'
+    ]);
+
     //menu
     Route::prefix('Menu')->group(function(){
         Route::get('/', [
@@ -71,6 +94,18 @@ Route::prefix('Home')->group(function(){
         Route::get('/', [
             'as'=> 'profile.index',
             'uses'=> 'ProfileController@index'
+        ]);
+        Route::get('/update-information', [
+            'as'=> 'profile.update',
+            'uses'=> 'ProfileController@update'
+        ]);
+        Route::post('/confirm-update', [
+            'as'=> 'profile.confirm',
+            'uses'=> 'ProfileController@confirm'
+        ]);
+        Route::get('/log-out', [
+            'as'=> 'profile.logout',
+            'uses'=> 'ProfileController@logout'
         ]);
     });
 });
@@ -106,6 +141,43 @@ Route::prefix('Admin')->group(function(){
         
 //     });
 // });
+
+Route::prefix('AdminTable')->group(function(){
+    Route::get('/',[
+        'as'=>'AdminTable.index',
+        'uses'=>'AdminTable@index'
+    ]);
+    Route::get('/delete/{id}',[
+        'as'=>'AdminTable.delete',
+        'uses'=>'AdminTable@delete_table'
+    ]);
+    Route::get('/search',[
+        'as'=>'AdminTable.search',
+        'uses'=>'AdminTable@search_table'
+    ]);
+});
+
+Route::prefix('AdminPosts')->group(function(){
+    Route::get('/view-post',[
+        'as'=>'AdminPosts.index',
+        'uses'=>'Post@view'
+    ]);
+    Route::post('/update-post',[
+        'as'=>'AdminPosts.post',
+        'uses'=>'Post@post'
+    ]);
+});
+
+Route::prefix('AdminContact')->group(function(){
+    Route::get('/',[
+        'as'=>'AdminContact.index',
+        'uses'=>'AdminContact@index'
+    ]);
+    Route::get('/view-contact/{id}',[
+        'as'=>'AdminContact.view',
+        'uses'=>'AdminContact@eye_contact'
+    ]);
+});
 
 Route::prefix('Category')->group(function(){
     Route::get('/', [
@@ -249,6 +321,5 @@ Route::prefix('Permission')->group(function () {
         'uses'=> 'AdminPermissionController@store',
         // 'middleware'=>('can:permission-list')
     ]);
-    
     
 });

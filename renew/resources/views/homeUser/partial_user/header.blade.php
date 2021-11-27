@@ -7,7 +7,7 @@
         </button>
         <div class="collapse navbar-collapse" id="ftco-nav">
             <ul class="navbar-nav ml-auto">
-                <li class="nav-item active"><a href="{{URL::to('/')}}" class="nav-link">Home</a></li>
+                <li class="nav-item active"><a href="{{URL::to('/home')}}" class="nav-link">Home</a></li>
                 <li class="nav-item"><a href="{{route('Menu.index')}}" class="nav-link">Menu</a></li>
                 <li class="nav-item"><a href="services.html" class="nav-link">Services</a></li>
                 <li class="nav-item"><a href="blog.html" class="nav-link">Blog</a></li>
@@ -23,7 +23,7 @@
                         <a class="dropdown-item" href="{{URL::to('/logout')}}">Đăng xuất</a>
                     </div>
                 </li> --}}
-                <li class="nav-item"><a href="{{url('/contact')}}" class="nav-link">Contact</a></li>
+                <li class="nav-item"><a href="{{ route('home.contact') }}" class="nav-link">Contact</a></li>
                 <li class="nav-item cart"><a href="{{ route('home.cart') }}" class="nav-link"><span
                     class="icon icon-shopping_cart"></span><span
                     class="bag d-flex justify-content-center align-items-center"><small>1</small></span></a>
