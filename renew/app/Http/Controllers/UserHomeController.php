@@ -143,7 +143,7 @@ class UserHomeController extends Controller
     {
         if (auth()->check()) {
             $products= Cart::where('user_id', auth()->user()->id)->get();
-
+            // dd($products);
             return view('homeUser.pages.cart', compact('products'));
         }
         return redirect()->to(route('home.login'));
