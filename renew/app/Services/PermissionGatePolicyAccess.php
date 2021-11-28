@@ -11,7 +11,7 @@ class PermissionGatePolicyAccess{
         $this->defineGateUser();
         $this->defineGateRole();
         $this->defineGatePermission();
-        // $this->defineGateProduct();
+        $this->defineGateHomeAdmin();
 
     }
 
@@ -89,5 +89,15 @@ class PermissionGatePolicyAccess{
         Gate::define('permission-delete', function ($user) {
             return $user->checkPermissionAccess('delete_permission');
         });
+    }
+    public function defineGateHomeAdmin()
+    {
+        Gate::define('admin-home', function ($user) {
+            return $user->checkPermissionAccess('admin_home');
+        });
+        Gate::define('admin-login', function ($user) {
+            return $user->checkPermissionAccess('admin_login');
+        });
+       
     }
 }

@@ -75,6 +75,8 @@ class UserHomeController extends Controller
     public function menu()
     {
         $categories= Category::all();
+        // $qq= $categories->contains('id', 1);
+        // dd($qq);
         return view('homeUser.pages.menu', compact('categories'));
     }
 

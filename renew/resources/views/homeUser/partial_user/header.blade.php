@@ -30,17 +30,17 @@
                 </li>
                 <li class="nav-item dropdown">
                     @if (auth()->user())
-                    <a class="nav-link dropdown-toggle" href="room.html" id="dropdown04" data-toggle="dropdown"
-                        aria-haspopup="true" aria-expanded="false">
-                        {{ auth()->user()->name}}
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="dropdown04">
-                        <a class="dropdown-item" href="{{ route('profile.index') }}"><i class="fa fa-user pr-2"></i> Profile</a>
-                        <a class="dropdown-item" href="product-single.html"><i class="fa fa-th-list pr-2"></i> Tasks</a>
-                        <a class="dropdown-item" href="room.html"><i class="fa fas fa-cart-plus"></i>Cart</a>
-                        {{-- <a class="dropdown-item" href="checkout.html">Checkout</a> --}}
-                        <a class="dropdown-item" href="{{route('home.logout')}}"><i class="fa fa-power-off pr-2"></i> Logout</a>
-                    </div>
+                        <a class="nav-link dropdown-toggle" href="room.html" id="dropdown04" data-toggle="dropdown"
+                            aria-haspopup="true" aria-expanded="false">
+                            {{ auth()->user()->name}}
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="dropdown04">
+                            <a class="dropdown-item" href="{{ route('profile.index') }}"><i class="fa fa-user pr-2"></i> Profile</a>
+                            <a class="dropdown-item" href="product-single.html"><i class="fa fa-th-list pr-2"></i> Tasks</a>
+                            <a class="dropdown-item" href="room.html"><i class="fa fas fa-cart-plus"></i>Cart</a>
+                            {{-- <a class="dropdown-item" href="checkout.html">Checkout</a> --}}
+                            <a class="dropdown-item" href="{{route('home.logout')}}"><i class="fa fa-power-off pr-2"></i> Logout</a>
+                        </div>
                     @else
                         <a class="nav-link dropdown-toggle" href="{{ route('home.login') }}" id="dropdown04" >
                             {{ 'Login' }}

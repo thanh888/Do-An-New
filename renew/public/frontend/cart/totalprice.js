@@ -8,11 +8,19 @@ function actionPlus(e){
     var price = parseInt($('#price').html()) ;
     var totalproduct = $('#total_product');
     let that =$(this).data('url');
+    quantity+=1;
+    
+    $.ajax({
+        type: 'GET',
+        url: that,
+        data: {
+            quantity: quantity,
+        },
+        success: function(data){
 
-    $('#quantity').val(quantity +1 );
-
-    alert(quantity+1);
-
+        }
+    })
+    // $('#quantity').val(quantity +1 );
     totalproduct = $('#quantity').val() * price;
 
     $('#total_product').val() = $('#quantity').val() * price;

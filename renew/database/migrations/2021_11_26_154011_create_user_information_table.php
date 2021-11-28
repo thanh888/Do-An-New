@@ -13,7 +13,7 @@ class CreateUserInfomation extends Migration
      */
     public function up()
     {
-        Schema::create('user_infomation', function (Blueprint $table) {
+        Schema::create('user_information', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('user_id');
             $table->string('name');

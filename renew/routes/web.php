@@ -13,7 +13,8 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [
     'as'=> 'Admin.index',
-    'uses'=> 'AdminController@index'
+    'uses'=> 'AdminController@index',
+    'middleware'=> 'can:admin-home'
 ]);
 Route::get('/home', [
     'as'=> 'home.index',
@@ -114,11 +115,8 @@ Route::prefix('Home')->group(function(){
 Route::prefix('Admin')->group(function(){
     Route::get('/login', [
         'as'=> 'Admin.login',
-        'uses'=> 'AdminController@login'
-    ]);
-    Route::get('/register', [
-        'as'=> 'Admin.register',
-        'uses'=> 'AdminController@register'
+        'uses'=> 'AdminController@login',
+        'middleware'=> 'can:admin-login'
     ]);
     Route::get('/logout', [
         'as'=> 'Admin.logout',
@@ -134,14 +132,7 @@ Route::prefix('Admin')->group(function(){
     ]);
 
 });
-
-
-// Route::prefix('Admin')->group(function(){
-//     Route::get('/', function ($id) {
-        
-//     });
-// });
-
+ 
 Route::prefix('AdminTable')->group(function(){
     Route::get('/',[
         'as'=>'AdminTable.index',

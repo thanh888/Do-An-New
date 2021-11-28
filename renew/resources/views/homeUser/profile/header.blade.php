@@ -1,7 +1,7 @@
 <div class="col-sm-6">
-    <h3 class="user-profile__title">{{ $user->name }}</h3>
-    <p class="user-profile__desc">{{ $user->favourite }}</p>
-    <div class="user-profile__url"> <a href="{{ $user->linkfb }}">{{ $user->linkfb  }}</a>
+    <h3 class="user-profile__title">{{ $user->name ? $user->name : auth()->user()->name  }}</h3>
+    <p class="user-profile__desc">{{ $user->favourite ? $user->favourite : ''  }}</p>
+    <div class="user-profile__url"> <a href="{{ $user->linkfb ? $user->location : ''   }}">{{ $user->linkfb ? $user->linkfb : 'Chua cap nhat'    }}</a>
     </div>
     <div class="social">
         <ul class="list-inline">
@@ -16,8 +16,8 @@
 </div>
 <div class="col-sm-6">
     <ul class="user-profile__info">
-        <li> <i class="fa fa-user"></i> {{ $user->gender }}</li>
-        <li> <i class="fa fa-phone"></i> {{ $user->number_phone }}</li>
-        <li> <i class="fa fa-map-marker"></i> {{ $user->location }}</li>
+        <li> <i class="fa fa-user"></i> {{ $user->gender ? $user->gender : 'Chua cap nhat'  }}</li>
+        <li> <i class="fa fa-phone"></i> {{ $user->number_phone ? $user->number_phone : 'Chua cap nhat' }}</li>
+        <li> <i class="fa fa-map-marker"></i> {{ $user->location ? $user->location : 'Chua cap nhat'  }}</li>
     </ul>
 </div>
