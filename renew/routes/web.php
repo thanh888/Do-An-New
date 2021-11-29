@@ -88,7 +88,10 @@ Route::prefix('Home')->group(function(){
     });
     
     Route::prefix('Cart')->group(function(){
-        
+        Route::get('update_qiantity/{id}', [
+            'as'=>'cart.updateQuantity',
+            'uses'=> 'UserHomeController@updateQuantity'
+        ]);
     });
 
     Route::prefix('Profile')->group(function(){

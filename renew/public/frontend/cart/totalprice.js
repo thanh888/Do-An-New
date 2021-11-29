@@ -4,41 +4,87 @@ $(function(){
 })
 function actionPlus(e){
     e.preventDefault();
-    let quantity = parseInt($('#quantity').val()) ;
-    var price = parseInt($('#price').html()) ;
-    var totalproduct = $('#total_product');
+    let count= 0;
+    $('#total_product').html().each(function(){
+        count+=1;
+    })
+    alert(count);
+    let price = parseInt($(this).parent().parent().parent().parent().find('#price').html()) ;
     let that =$(this).data('url');
-    quantity+=1;
-    
+   
+    let quantity= $(this).parent().parent().find('#quantity').val();
+    quantity =parseInt(quantity) + 1;
+    $(this).parent().parent().find('#quantity').val(quantity);
+    $(this).parent().parent().parent().parent().find('#total_product').html(quantity* price);
     $.ajax({
         type: 'GET',
         url: that,
         data: {
-            quantity: quantity,
+            quantity: quantity
         },
         success: function(data){
-
+            if(data.code==200){
+                const Toast = Swal.mixin({
+                    toast: true,
+                    position: 'top-end',
+                    showConfirmButton: false,
+                    timer: 800,
+                    timerProgressBar: true,
+                    didOpen: (toast) => {
+                      toast.addEventListener('mouseenter', Swal.stopTimer)
+                      toast.addEventListener('mouseleave', Swal.resumeTimer)
+                    }
+                  })
+                  
+                  Toast.fire({
+                    icon: 'success',
+                    title: 'Update product successfully'
+                  })
+            }
         }
     })
-    // $('#quantity').val(quantity +1 );
-    totalproduct = $('#quantity').val() * price;
-
-    $('#total_product').val() = $('#quantity').val() * price;
 }
 function actionMinus(e){
     e.preventDefault();
-    let quantity = parseInt($('#quantity').val()) ;
     var price = parseInt($('#price').html()) ;
     var totalproduct = $('#total_product');
     let that =$(this).data('url');
-    // $('#quantity').val(quantity +1 );
 
-    alert(quantity-1);
-
-    if (quantity > 0) {
-        $('#quantity').val(quantity - 1);
+    let quantity= $(this).parent().parent().find('#quantity').val();
+    if (parseInt(quantity) > 0) {
+        quantity =parseInt(quantity) - 1;
+        $(this).parent().parent().find('#quantity').val(quantity);
     }
-    $(this).parent().find('#quantity').val(quantity-1);
-    $('#total_product').value = $('#quantity').val() * price;
+    // $(this).parent().parent().parent().find('#total_product').html(quantity* price);
+    // $('#total_product').html(quantity* price)
+    $.ajax({
+        type: 'GET',
+        url: that,
+        data: {
+            quantity: quantity
+        },
+        success: function(data){
+            if(data.code==200){
+
+                const Toast = Swal.mixin({
+                    toast: true,
+                    position: 'top-end',
+                    showConfirmButton: false,
+                    timer: 800,
+                    timerProgressBar: true,
+                    didOpen: (toast) => {
+                      toast.addEventListener('mouseenter', Swal.stopTimer)
+                      toast.addEventListener('mouseleave', Swal.resumeTimer)
+                    }
+                  })
+                  
+                  Toast.fire({
+                    icon: 'success',
+                    title: 'Update product successfully'
+                  })
+            }
+        }
+    })
+    // $('#total_product').value = $('#quantity').val() * price;
     
 }

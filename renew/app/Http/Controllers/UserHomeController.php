@@ -151,5 +151,17 @@ class UserHomeController extends Controller
         return redirect()->to(route('home.login'));
 
     }
+
+    public function updateQuantity($id, Request $request)
+    {
+        $product= Cart::find($id);
+        Cart::find($id)->update([
+            'quantity'=> $request->quantity
+        ]);
+        return response()->json([
+            'code'=>200,
+            'message'=>'fail'
+        ], 200);
+    }
 }
 
