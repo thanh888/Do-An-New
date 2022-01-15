@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateOrderedListsTable extends Migration
+class CreateListSuccessesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateOrderedListsTable extends Migration
      */
     public function up()
     {
-        Schema::create('ordered__lists', function (Blueprint $table) {
+        Schema::create('list_successes', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->integer('user_id');
             $table->integer('product_id');
@@ -25,8 +25,6 @@ class CreateOrderedListsTable extends Migration
             $table->String('address');
             $table->String('note');
             $table->String('status');
-
-            // $table->integer('user_id');
             $table->timestamps();
         });
     }
@@ -38,6 +36,6 @@ class CreateOrderedListsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('ordered__lists');
+        Schema::dropIfExists('list_successes');
     }
 }

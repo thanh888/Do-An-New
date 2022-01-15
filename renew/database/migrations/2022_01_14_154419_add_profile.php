@@ -15,10 +15,10 @@ class AddProfile extends Migration
     {
         Schema::table('users', function (Blueprint $table) {
             $table->string('description');
-            $table->string('fullname');
-            $table->string('phone');
-            $table->string('location');
-            $table->string('linkfb');
+            $table->string('fullname')->nullable();
+            $table->string('phone')->nullable();
+            $table->string('location')->nullable();
+            $table->string('linkfb')->nullable();
         });
     }
 

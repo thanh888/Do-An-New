@@ -207,7 +207,7 @@ class UserHomeController extends Controller
             'city'=>'required',
             'district'=>'required',
             'ward'=>'required',
-            'status'=>'accepted',
+            // 'status'=>'accepted',
         ]);
         $status='';
             foreach ($request->status as $key ) {  

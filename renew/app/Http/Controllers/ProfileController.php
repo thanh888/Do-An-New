@@ -9,9 +9,9 @@ class ProfileController extends Controller
 {
     public function index()
     {
-        
-        $user= UserInformation::where('user_id', auth()->user()->id)->get()->first();
-        return view('homeUser.profile.index',compact('user'));
+        $profile= User::find(auth()->id());
+        return view('homeUser.profile.index', compact('profile'));
+        // return view('UserHome.profile.index');
     }
     function update(){
         $profile= User::find(auth()->id());
@@ -27,26 +27,5 @@ class ProfileController extends Controller
         $data->save();
         return redirect(route('profile.index'));
     }
-    // public function index()
-    // {
-    //     $user= UserInformation::firstWhere('user_id', auth()->user()->id);
-    //     return view('homeUser.profile.index',compact('user'));
-    // }
-    // function update(){
-    //     $user= UserInformation::firstWhere('user_id', auth()->user()->id);
-    //     return view('homeUser.profile.update',compact('user'));
-    // }
-    // function confirm(Request $request){
-    //     $data= UserInformation::find($request->id);
-    //     $data->name=$request->name;
-    //     $data->favourite=$request->favourite;
-    //     $data->linkfb=$request->linkfb;
-    //     $data->number_phone=$request->number_phone;
-    //     $data->location=$request->location;
-    //     $data->save();
-    //     return redirect(route('profile.index'));
-    // }
-    // function logout(){
-    //     return redirect(route('home.index'));
-    // }
+    
 }

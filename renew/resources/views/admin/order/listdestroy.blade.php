@@ -22,14 +22,12 @@
                     <thead>
                         <tr>
                             
-                            <th>STT</th>
                             <th>Tên khách hàng</th>
                             <th>Tên Sản Phẩm</th>
                             <th>Giá</th>
                             <th>Sđt</th>
                             <th>Địa chỉ</th>
-                            <th>Ghi chú</th>
-                            <th>Chức năng</th>
+                            <th>Thời gian hủy</th>
                         </tr>
                     </thead>
                    
@@ -37,7 +35,6 @@
                        
                         @foreach($products as $product)
                         <tr>
-                            <td  class="align-middle">{{$product ->id}}</td>
                             <td  class="align-middle">
                                 {{$product->name_customer}}
                             </td>
@@ -53,15 +50,8 @@
                             <td  class="align-middle">
                                 {{$product ->address }}
                             </td>
-                            <td  class="align-middle">
-                                {{$product ->note }}
-                            </td>
-                            
                             <td class="align-middle text-center">
-                                <a data-url="{{ route('ship.success',['id'=>$product->id]) }}" class="btn btn-success success">
-                                    <i class="fas fa-check"></i></a>
-                                <a data-url="{{route('ship.delete',['id'=>$product->id])}}"
-                                    class="btn btn-danger action_delete" role="button"><i class="fas fa-trash"></i></a>
+                                {{ $product->updated_at }}
                             </td>
                         </tr>
                         @endforeach

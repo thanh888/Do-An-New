@@ -167,7 +167,31 @@ Route::prefix('Admin')->group(function(){
 Route::prefix('Ordered')->group(function(){
     Route::get('/',[
         'as'=>'order.index',
-        'uses'=>'OrderController@index'
+        'uses'=>'OrderController@index',
+        'middleware'=>('can:list-order')
+
+    ]);
+    Route::get('/Success/{id}',[
+        'as'=>'ship.success',
+        'uses'=>'OrderController@success',
+
+    ]);
+    Route::get('/delete/{id}',[
+        'as'=>'ship.delete',
+        'uses'=>'OrderController@delete',
+
+    ]);
+    Route::get('/Danh sách giao thành công',[
+        'as'=>'order.listsuccess',
+        'uses'=>'OrderController@listsuccess',
+        'middleware'=>('can:list-success')
+
+    ]);
+    Route::get('/Danh sách bị hủy',[
+        'as'=>'order.listdestroy',
+        'uses'=>'OrderController@listdestroy',
+        'middleware'=>('can:list-destroy')
+
     ]);
 });
  

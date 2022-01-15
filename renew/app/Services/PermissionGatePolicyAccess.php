@@ -12,6 +12,7 @@ class PermissionGatePolicyAccess{
         $this->defineGateRole();
         $this->defineGatePermission();
         $this->defineGateHomeAdmin();
+        $this->defineGateOrder();
 
     }
 
@@ -98,6 +99,19 @@ class PermissionGatePolicyAccess{
         // Gate::define('admin-login', function ($user) {
         //     return $user->checkPermissionAccess('admin_login');
         // });
+       
+    }
+    public function defineGateOrder()
+    {
+        Gate::define('list-order', function ($user) {
+            return $user->checkPermissionAccess('list_order');
+        });
+        Gate::define('list-success', function ($user) {
+            return $user->checkPermissionAccess('list_success');
+        });
+        Gate::define('list-destroy', function ($user) {
+            return $user->checkPermissionAccess('list_destroy');
+        });
        
     }
 }
