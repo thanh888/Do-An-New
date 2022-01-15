@@ -34,7 +34,6 @@ class Appointment extends Controller
         $data->sdt=$request->phone;
         $data->descript=$request->descript;
         $data->save();
-        echo '<script> alert("Đặt bàn thành công") </>';
-        return view('homeUser.pages.home');
+         return redirect(route('home.index'));;
     }
 }
