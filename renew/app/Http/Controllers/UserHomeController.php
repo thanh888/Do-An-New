@@ -4,13 +4,18 @@ namespace App\Http\Controllers;
 
 use App\Models\Cart;
 use App\Models\Category;
+use App\Models\Ordered_List;
 use App\Models\Product;
 use App\Models\Role;
 use App\Models\Size;
+use App\Models\UserInformation;
 use App\User;
+use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Log;
 
 class UserHomeController extends Controller
 {
@@ -131,7 +136,7 @@ class UserHomeController extends Controller
                 'image'=>$product->image,
                 'size'=> $product->size,
                 'quantity'=>$request->quantity,
-                'price'=>$product->price * $request->quantity,
+                'price'=>$product->price,
 
             ]);
             return response()->json([
@@ -145,11 +150,30 @@ class UserHomeController extends Controller
     {
         if (auth()->check()) {
             $products= Cart::where('user_id', auth()->user()->id)->get();
-            // dd($products);
-            return view('homeUser.pages.cart', compact('products'));
+            $dem = 0;
+            foreach ($products as $key ) {
+                $dem+=1;
+            }
+            return view('homeUser.pages.cart', compact('products','dem'));
         }
         return redirect()->to(route('home.login'));
 
+    }
+    public function cartdelete($id)
+    {
+        try {
+            Cart::find($id)->delete();
+            return response()->json([
+                'code'=>200,
+                'message'=>'fail'
+            ], 200);
+        }catch (\Exception $exception) {
+            Log::error("message". $exception->getMessage().'line: '. $exception->getLine());
+            return response()->json([
+                'code'=>500,
+                'message'=>'fail'
+            ], 500);
+        }
     }
 
     public function updateQuantity($id, Request $request)
@@ -162,6 +186,51 @@ class UserHomeController extends Controller
             'code'=>200,
             'message'=>'fail'
         ], 200);
+    }
+    public function checkout()
+    {
+        $infor= UserInformation::where('user_id', auth()->user()->id)->get()->first();
+        $payments= DB::table('tbl_payments')->get();
+        $products= Cart::where('user_id', auth()->user()->id)->get();
+        $total= 0;
+        foreach ($products as $product) {
+            $total += $product->quantity* $product->price;
+        }
+        return view('homeUser.pages.checkout', compact('total', 'infor', 'payments'));
+    }
+    public function orderr(Request $request)
+    {
+        //  dd($request->status);
+        $request->validate([
+            'username'=> 'required',
+            'phone'=> 'required| numeric| ',
+            'city'=>'required',
+            'district'=>'required',
+            'ward'=>'required',
+            'status'=>'accepted',
+        ]);
+        $status='';
+            foreach ($request->status as $key ) {  
+                $status=$key;
+            }
+            $products= Cart::where('user_id', auth()->user()->id)->get();
+                
+            foreach ($products as $product ) {
+                Ordered_List::create([
+                    'user_id'=> auth()->user()->id,
+                    'product_id'=> $product->id,
+                    'name_customer'=> $request->username,
+                    'name_product'=> $product->name,
+                    'price'=> $request->price,
+                    'phone'=>$request->phone,
+                    'address'=> $request->ward  .' '.  $request->district .' '.   $request->city,
+                    'note'=> $request->note,
+                    'status'=> $status
+                ]);
+            } 
+            Cart::where('user_id', auth()->user()->id)->delete();
+            return redirect()->to(route('home.index'));
+        
     }
 }
 

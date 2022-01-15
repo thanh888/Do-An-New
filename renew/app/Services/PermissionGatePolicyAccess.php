@@ -95,9 +95,9 @@ class PermissionGatePolicyAccess{
         Gate::define('admin-home', function ($user) {
             return $user->checkPermissionAccess('admin_home');
         });
-        Gate::define('admin-login', function ($user) {
-            return $user->checkPermissionAccess('admin_login');
-        });
+        // Gate::define('admin-login', function ($user) {
+        //     return $user->checkPermissionAccess('admin_login');
+        // });
        
     }
 }

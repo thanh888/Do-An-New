@@ -3,14 +3,17 @@
 @section('content')
 @include('homeUser.partial_user.slider', ['name'=>'Home','key'=>'Cart'])
 		
-@if ($products!= null)
+@if ($dem != 0)
 
     <section class="ftco-section ftco-cart">
         <div class="container">
             <div class="row">
                 <div class="col-md-12 ftco-animate">
-                    <div class="cart-list">
-                        <table class="table">
+                    <div class="cart-list " id="table_product" style="
+                    max-height: 600px;
+                    overflow-y: scroll;
+                    scroll-behavior: smooth;">
+                        <table class="table" id="table">
                             <thead class="thead-primary">
                             <tr class="text-center">
                                 <th>&nbsp;</th>
@@ -25,7 +28,7 @@
                                 @foreach ($products as $product)
                                     <tr class="text-center product">
                                         <td class="product-remove">
-                                            <a href="" data-url=""><span class="icon-close"></span></a>
+                                            <a class="cart_delete" data-url="{{ route('cart.delete', ['id'=>$product->id]) }}"><span class="icon-close"></span></a>
                                         </td>
                                         <td class="image-prod"><div class="img" style="background-image:url({{asset('uploads/products/'.$product->image.'')}});"></div></td>
                                         
@@ -63,25 +66,13 @@
             <div class="col col-lg-3 col-md-6 mt-5 cart-wrap ftco-animate">
                 <div class="cart-total mb-3">
                     <h3>Cart Totals</h3>
-                    <p class="d-flex">
-                        <span>Subtotal</span>
-                        <span>$20.60</span>
-                    </p>
-                    <p class="d-flex">
-                        <span>Delivery</span>
-                        <span>$0.00</span>
-                    </p>
-                    <p class="d-flex">
-                        <span>Discount</span>
-                        <span>$3.00</span>
-                    </p>
-                    <hr>
+                    
                     <p class="d-flex total-price">
                         <span>Total</span>
                         <span>$17.60</span>
                     </p>
                 </div>
-                <p class="text-center"><a href="checkout.html" class="btn btn-primary py-3 px-4">Proceed to Checkout</a></p>
+                <p class="text-center"><a href="{{ route('home.checkout') }}" class="btn btn-primary py-3 px-4">Proceed to Checkout</a></p>
             </div>
         </div>
         </div>
@@ -104,6 +95,5 @@
 @endsection
 @section('js')
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-
-    <script src="{{ asset('frontend/cart/totalprice.js') }}"></script>
+<script src="{{ asset('frontend/cart/totalprice.js') }}"></script>
 @endsection

@@ -32,6 +32,11 @@
                                  </a>
                              </li>
                             <li class="parent">
+                                <a href="{{route('order.index')}}" class=""><i class="fa fa-table mr-3"></i>
+                                     <span class="none"> Đơn đặt hàng </span>
+                                 </a>
+                             </li>
+                            <li class="parent">
                                 <a href="#" onclick="toggle_menu('ul_element'); return false" class=""><i class="fa fa-puzzle-piece mr-3"></i>
                                     <span class="none">Quan ly <i class="fa fa-angle-down pull-right align-bottom"></i></span>
                                 </a>

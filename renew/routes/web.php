@@ -46,6 +46,19 @@ Route::prefix('Home')->group(function(){
         'as'=> 'home.cart',
         'uses'=> 'UserHomeController@cart'
     ]);
+    Route::get('/Detele/{id}', [
+        'as'=> 'cart.delete',
+        'uses'=> 'UserHomeController@cartdelete'
+    ]);
+    Route::get("Checkout",[
+        'as'=> 'home.checkout',
+        'uses'=> 'UserHomeController@checkout'
+    ]);
+
+    Route::post('Order',[
+        'as'=> 'home.orderr',
+        'uses'=> 'UserHomeController@orderr'
+    ]);
 
     Route::get('/set-appointment', [
         'as'=> 'home.setappointment',
@@ -88,7 +101,7 @@ Route::prefix('Home')->group(function(){
     });
     
     Route::prefix('Cart')->group(function(){
-        Route::get('update_qiantity/{id}', [
+        Route::get('update_quantity/{id}', [
             'as'=>'cart.updateQuantity',
             'uses'=> 'UserHomeController@updateQuantity'
         ]);
@@ -119,7 +132,6 @@ Route::prefix('Admin')->group(function(){
     Route::get('/login', [
         'as'=> 'Admin.login',
         'uses'=> 'AdminController@login',
-        'middleware'=> 'can:admin-login'
     ]);
     Route::get('/logout', [
         'as'=> 'Admin.logout',
@@ -134,6 +146,12 @@ Route::prefix('Admin')->group(function(){
         'uses'=> 'AdminController@postRegister'
     ]);
 
+});
+Route::prefix('Ordered')->group(function(){
+    Route::get('/',[
+        'as'=>'order.index',
+        'uses'=>'OrderController@index'
+    ]);
 });
  
 Route::prefix('AdminTable')->group(function(){

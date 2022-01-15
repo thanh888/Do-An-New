@@ -4,6 +4,7 @@ namespace App;
 
 use App\Models\Product;
 use App\Models\Role;
+use App\Models\UserInformation;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -61,5 +62,9 @@ class User extends Authenticatable
         }
         return false;
         //b2 so sanh gia tri cua route hien tai xem co ton tai trong cac  quyen  maf minh lay duoc hay k
+    }
+    public function userinfor()
+    {
+        // return $this->belongsTo(UserInformation::class, 'user')
     }
 }

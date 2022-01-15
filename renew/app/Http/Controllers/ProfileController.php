@@ -8,7 +8,8 @@ class ProfileController extends Controller
 {
     public function index()
     {
-        $user= UserInformation::firstWhere('user_id', auth()->user()->id);
+        
+        $user= UserInformation::where('user_id', auth()->user()->id)->get()->first();
         return view('homeUser.profile.index',compact('user'));
     }
     function update(){
