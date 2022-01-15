@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Cart;
 use App\Models\Category;
+use App\Models\Posts;
 use App\Models\Ordered_List;
 use App\Models\Product;
 use App\Models\Role;
@@ -30,7 +31,8 @@ class UserHomeController extends Controller
     }
     public function index()
     {
-        return view('homeUser.pages.home');
+        $pt = Posts::find(1);
+        return view('homeUser.pages.home',compact('pt'));
     }   
     public function login()
     {
@@ -233,4 +235,3 @@ class UserHomeController extends Controller
         
     }
 }
-

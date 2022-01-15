@@ -66,8 +66,8 @@
                     <div class="col-md-4 d-flex ftco-animate">
                         <div class="icon"><span class="icon-my_location"></span></div>
                         <div class="text">
-                            <h3>198 West 21th Street</h3>
-                            <p> 203 Fake St. Mountain View, San Francisco, California, USA</p>
+                            <h3>243 Hùng Vương</h3>
+                            <p> 47, Đại Học Công Nghệ Thông Tin Việt hàn</p>
                         </div>
                     </div>
                     <div class="col-md-4 d-flex ftco-animate">
@@ -130,7 +130,7 @@
                 <h2 class="mb-4">Our Story</h2>
             </div>
             <div>
-                <p></p>
+                <p>{{ $pt->content }}</p>
             </div>
         </div>
     </div>
@@ -146,8 +146,7 @@
                     </div>
                     <div class="media-body">
                         <h3 class="heading">Đặt hàng dễ dàng</h3>
-                        <p>Even the all-powerful Pointing has no control about the blind texts it is an almost
-                            unorthographic.</p>
+                        <p>Thao tác đặt hàng tiện lợi và dễ dàng.</p>
                     </div>
                 </div>
             </div>
@@ -158,8 +157,7 @@
                     </div>
                     <div class="media-body">
                         <h3 class="heading">Giao hàng nhanh chóng</h3>
-                        <p>Even the all-powerful Pointing has no control about the blind texts it is an almost
-                            unorthographic.</p>
+                        <p>Vẫn chuyển sức nóng khi đi tới tay khách hàng không hề giảm.</p>
                     </div>
                 </div>
             </div>
@@ -170,8 +168,7 @@
                     </div>
                     <div class="media-body">
                         <h3 class="heading">Cà phê chất lượng cao</h3>
-                        <p>Even the all-powerful Pointing has no control about the blind texts it is an almost
-                            unorthographic.</p>
+                        <p>Chất lượng khỏi bàn cãi tuyệt vời ông mặt trời.</p>
                     </div>
                 </div>
             </div>
@@ -186,10 +183,8 @@
                 <div class="heading-section text-md-right ftco-animate">
                     <span class="subheading">Tìm hiểu</span>
                     <h2 class="mb-4"> Menu</h2>
-                    <p class="mb-4">Far far away, behind the word mountains, far from the countries Vokalia and
-                        Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the
-                        coast of the Semantics, a large language ocean.</p>
-                    <p><a href="#" class="btn btn-primary btn-outline-primary px-4 py-3">View Full Menu</a></p>
+                    <p class="mb-4">Thức uống được chế biến từ cà phê. Về chất lượng được tuyển chọn khắt khe từ khâu thu hoạch, phơi khô, rang sấy cũng như giai đoạn pha chế. Khách hàng có thể yên tâm để gửi gắm niềm tin vào thương hiệu thức uống từ Cà phê của chúng tôi. Bên cạnh các thức uống từ Cà phê quán còn phục vụ thêm bánh ngọt, kem.. ..</p>
+                    <p><a href="{{ route('Menu.index') }}" class="btn btn-primary btn-outline-primary px-4 py-3">View Full Menu</a></p>
                 </div>
             </div>
             <div class="col-md-6">
@@ -565,7 +560,7 @@
     <div class="container">
         <div class="row justify-content-center mb-5">
             <div class="col-md-7 heading-section text-center ftco-animate">
-                <span class="subheading">Testimony</span>
+                <span class="subheading">Tìm hiểu</span>
                 <h2 class="mb-4">Customers Says</h2>
                 <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there
                     live the blind texts.</p>
@@ -577,8 +572,7 @@
             <div class="col-lg align-self-sm-end ftco-animate">
                 <div class="testimony">
                     <blockquote>
-                        <p>&ldquo;Even the all-powerful Pointing has no control about the blind texts it is an
-                            almost unorthographic life One day however a small.&rdquo;</p>
+                        <p>&ldquo;Đã từng làm việc với nhiều bên kinh doanh và phát triển web.&rdquo;</p>
                     </blockquote>
                     <div class="author d-flex mt-4">
                         <div class="image mr-3 align-self-center">
@@ -592,9 +586,7 @@
             <div class="col-lg align-self-sm-end">
                 <div class="testimony overlay">
                     <blockquote>
-                        <p>&ldquo;Even the all-powerful Pointing has no control about the blind texts it is an
-                            almost unorthographic life One day however a small line of blind text by the name of
-                            Lorem Ipsum decided to leave for the far World of Grammar.&rdquo;</p>
+                        <p>&ldquo;Đối với một công ty kinh doanh trong thời kỳ công nghệ số như hiện nay thì website đóng một vai trò hết sức quan trọng. Và bài toán đặt ra khi bạn bắt đầu cho một website chính là lựa chọn đơn vị thiết kế.&rdquo;</p>
                     </blockquote>
                     <div class="author d-flex mt-4">
                         <div class="image mr-3 align-self-center">
@@ -608,8 +600,7 @@
             <div class="col-lg align-self-sm-end ftco-animate">
                 <div class="testimony">
                     <blockquote>
-                        <p>&ldquo;Even the all-powerful Pointing has no control about the blind texts it is an
-                            almost unorthographic life One day however a small line of blind text by the name.
+                        <p>&ldquo;Các mẫu thiết kế rất độc đáo và ấn tượng. Dịch vụ chăm sóc khách hàng tuyệt vời, tận tâm. Mình sẽ còn hợp tác lâu dài cùng Tất Thành. Chúc các bạn phát triển mạnh hơn nữa trong thời gian tới..
                             &rdquo;</p>
                     </blockquote>
                     <div class="author d-flex mt-4">
@@ -624,8 +615,7 @@
             <div class="col-lg align-self-sm-end">
                 <div class="testimony overlay">
                     <blockquote>
-                        <p>&ldquo;Even the all-powerful Pointing has no control about the blind texts it is an
-                            almost unorthographic life One day however.&rdquo;</p>
+                        <p>&ldquo;Các bạn có phong cách trẻ trung, năng động và có ý thức cầu tiến rất cao, chính vì vậy tôi hoàn toàn yên tâm khi giao các ý tưởng phát triển.&rdquo;</p>
                     </blockquote>
                     <div class="author d-flex mt-4">
                         <div class="image mr-3 align-self-center">
@@ -639,8 +629,7 @@
             <div class="col-lg align-self-sm-end ftco-animate">
                 <div class="testimony">
                     <blockquote>
-                        <p>&ldquo;Even the all-powerful Pointing has no control about the blind texts it is an
-                            almost unorthographic life One day however a small line of blind text by the name.
+                        <p>&ldquo;Nhân viên nhiệt tình và chuyên nghiệp. Tất Thành luôn đề xuất những ý tưởng và đưa ra những tư vấn tốt nhất cho doanh nghiệp. Đội ngũ chăm sóc khách hàng luôn can thiệp kịp thời để giải quyết các sự cố mà chúng tôi gặp phải..
                             &rdquo;</p>
                     </blockquote>
                     <div class="author d-flex mt-4">
@@ -662,7 +651,9 @@
     <div class="container-wrap">
         <div class="row no-gutters d-md-flex align-items-center">
             <div class="col-md-12 d-flex align-self-stretch">
-                <div id="map"></div>
+                <div id="map">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3835.736468488049!2d108.25128751438706!3d15.975132788939103!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x314211f3bb84f4db%3A0xd06b5de33a4a6157!2zxJDhuqBJIEjhu4xDIEPDlE5HIE5HSOG7hiBUSMOUTkcgVElOIFbDgCBUUlVZ4buATiBUSMOUTkcgVknhu4ZUIEjDgE4gLSDEkOG6oEkgSOG7jEMgxJDDgCBO4bq0Tkc!5e0!3m2!1svi!2s!4v1642251815502!5m2!1svi!2s"  allowfullscreen="" loading="lazy"></iframe>
+                </div>
             </div>
         </div>
     </div>

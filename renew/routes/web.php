@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [
     'as'=> 'Admin.index',
     'uses'=> 'AdminController@index',
-    'middleware'=> 'can:admin-home'
+    // 'middleware'=> 'can:admin-home'
 ]);
 Route::get('/home', [
     'as'=> 'home.index',
@@ -98,6 +98,24 @@ Route::prefix('Home')->group(function(){
             'uses'=> 'UserHomeController@AddToCart'
         ]);
 
+    });
+    Route::prefix('About')->group(function(){
+        Route::get('/', [
+            'as'=> 'about.index',
+            'uses'=> 'AboutController@about'
+        ]);
+    });
+    Route::prefix('Blog')->group(function(){
+        Route::get('/', [
+            'as'=> 'blog.index',
+            'uses'=> 'BlogController@index'
+        ]);
+    });
+    Route::prefix('Services')->group(function(){
+        Route::get('/', [
+            'as'=> 'services.index',
+            'uses'=> 'ServicesController@index'
+        ]);
     });
     
     Route::prefix('Cart')->group(function(){
@@ -236,12 +254,12 @@ Route::prefix('Category')->group(function(){
     Route::get('/', [
         'as'=> 'Category.index',
         'uses'=> "CategoryController@index",
-        'middleware'=>('can:category-list')
+        // 'middleware'=>('can:category-list')
     ]);
     Route::get('/create', [
         'as'=> 'Category.create',
         'uses'=> "CategoryController@create",
-        'middleware'=>('can:category-create')
+        // 'middleware'=>('can:category-create')
     ]);
     Route::post('/store', [
         'as'=> 'Category.store',
@@ -250,7 +268,7 @@ Route::prefix('Category')->group(function(){
     Route::get('/edit/{id}', [
         'as'=> 'Category.edit',
         'uses'=> "CategoryController@edit",
-        'middleware'=>('can:category-edit')
+        // 'middleware'=>('can:category-edit')
     ]);
     Route::post('/update/{id}', [
         'as'=> 'Category.update',
@@ -259,7 +277,7 @@ Route::prefix('Category')->group(function(){
     Route::get('/delete/{id}', [
         'as'=> 'Category.delete',
         'uses'=> "CategoryController@delete",
-        'middleware'=>('can:category-delete')
+        // 'middleware'=>('can:category-delete')
     ]);
 });
 
