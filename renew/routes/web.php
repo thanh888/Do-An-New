@@ -106,25 +106,42 @@ Route::prefix('Home')->group(function(){
             'uses'=> 'UserHomeController@updateQuantity'
         ]);
     });
-
-    Route::prefix('Profile')->group(function(){
-        Route::get('/', [
+    Route::prefix('profile')->group(function(){
+        Route::get('',[
             'as'=> 'profile.index',
             'uses'=> 'ProfileController@index'
         ]);
-        Route::get('/update-information', [
+        Route::get('/update-profile',[
             'as'=> 'profile.update',
             'uses'=> 'ProfileController@update'
         ]);
-        Route::post('/confirm-update', [
-            'as'=> 'profile.confirm',
-            'uses'=> 'ProfileController@confirm'
+        Route::post('/pupdate-profile',[
+            'as'=> 'profile.pupdate',
+            'uses'=> 'ProfileController@postupdate'
         ]);
-        Route::get('/log-out', [
-            'as'=> 'profile.logout',
-            'uses'=> 'ProfileController@logout'
+        Route::get('Postings', [
+            'as'=> 'profile.postings',
+            'uses'=> 'ProfileController@postings'
         ]);
     });
+    // Route::prefix('Profile')->group(function(){
+    //     Route::get('/', [
+    //         'as'=> 'profile.index',
+    //         'uses'=> 'ProfileController@index'
+    //     ]);
+    //     Route::get('/update-information', [
+    //         'as'=> 'profile.update',
+    //         'uses'=> 'ProfileController@update'
+    //     ]);
+    //     Route::post('/confirm-update', [
+    //         'as'=> 'profile.confirm',
+    //         'uses'=> 'ProfileController@confirm'
+    //     ]);
+    //     Route::get('/log-out', [
+    //         'as'=> 'profile.logout',
+    //         'uses'=> 'ProfileController@logout'
+    //     ]);
+    // });
 });
 
 //Admin
